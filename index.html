@@ -1,24 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>time-add-tool</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Czasu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="icon-container">
+                    <div class="icon-wrapper">
+                        <svg class="clock-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12,6 12,12 16,14"/>
+                        </svg>
+                    </div>
+                </div>
+                <h1 class="title">Kalkulator Czasu</h1>
+                <p class="subtitle">Dodaj dwa czasy w formacie mm.ss.mmm</p>
+            </div>
+            
+            <div class="card-content">
+                <div class="input-group">
+                    <div class="form-field">
+                        <label for="time1">Czas 1 (mm.ss.mmm)</label>
+                        <input type="text" id="time1" placeholder="0.00.000">
+                    </div>
+                    
+                    <div class="form-field">
+                        <label for="time2">Czas 2 (mm.ss.mmm)</label>
+                        <input type="text" id="time2" placeholder="0.00.000">
+                    </div>
+                </div>
 
-    <meta property="og:title" content="time-add-tool" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+                <button id="calculateBtn" class="calculate-btn">
+                    <svg class="calculator-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"/>
+                        <line x1="9" y1="9" x2="10" y2="9"/>
+                        <line x1="15" y1="9" x2="15" y2="9"/>
+                        <line x1="9" y1="15" x2="10" y2="15"/>
+                        <line x1="15" y1="15" x2="15" y2="15"/>
+                    </svg>
+                    Oblicz
+                </button>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+                <div id="resultSection" class="result-section" style="display: none;">
+                    <label class="result-label">Wynik:</label>
+                    <div class="result-display">
+                        <div id="result" class="result-value"></div>
+                    </div>
+                    <button id="copyBtn" class="copy-btn">
+                        <svg class="copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        Kopiuj wynik
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <div id="toast" class="toast"></div>
+    <script src="script.js"></script>
+</body>
 </html>
