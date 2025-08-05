@@ -5,37 +5,37 @@
     box-sizing: border-box;
 }
 
-/* Blue theme color variables */
+/* Darker blue theme color variables */
 :root {
-    /* Primary blue: medium blue */
-    --primary: 210 100% 56%; /* hsl(210, 100%, 56%) - Dodger Blue */
-    --primary-glow: 210 85% 65%; /* lighter blue for glow */
+    /* Primary deep blue */
+    --primary: 215 88% 35%; /* hsl(215, 88%, 35%) - Deep royal blue */
+    --primary-glow: 215 70% 40%; 
     
-    /* Secondary/deep blue for background and accents */
-    --secondary: 217 85% 25%; /* hsl(217, 85%, 25%) - Dark royal blue */
+    /* Secondary dark navy blue */
+    --secondary: 215 75% 15%; /* hsl(215, 75%, 15%) - Very dark navy */
     
-    /* Card background: very dark blue with some opacity */
-    --card: 210 60% 10%; /* dark navy base */
-    --card-foreground: 210 40% 95%; /* almost white blue for text */
+    /* Card background: nearly black with blue tint */
+    --card: 215 60% 8%; /* very dark navy */
+    --card-foreground: 215 35% 85%; /* light blueish gray for text */
     
-    /* Muted text / labels: medium dark blue */
-    --muted: 210 50% 40%;
-    --muted-foreground: 210 40% 70%;
+    /* Muted text / labels */
+    --muted: 215 30% 50%;
+    --muted-foreground: 215 25% 65%;
     
-    /* Borders, inputs and ring colors */
-    --border: 210 60% 30%;
-    --input: 210 50% 20%;
-    --ring: 210 100% 56%;
+    /* Borders & inputs */
+    --border: 215 70% 22%;
+    --input: 215 70% 12%;
+    --ring: 215 88% 35%;
     
-    /* Page background: a light blue gradient */
-    --background: 210 80% 93%;
-    --foreground: 210 40% 95%;
+    /* Page background: solid very dark navy */
+    --background: 215 75% 12%;
+    --foreground: 215 35% 85%;
 }
 
-/* Body with paired blue background gradient */
+/* Body with solid dark blue background */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: linear-gradient(135deg, hsl(var(--secondary) / 0.85), hsl(var(--background) / 0.9));
+    background-color: hsl(var(--background));
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -50,12 +50,11 @@ body {
     max-width: 28rem;
 }
 
-/* Card with dark translucent background for contrast */
+/* Card with solid dark background, no transparency */
 .card {
-    background: hsl(var(--card) / 0.85);
-    backdrop-filter: blur(10px);
+    background-color: hsl(var(--card));
     border-radius: 0.75rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 80, 0.7);
+    box-shadow: 0 10px 20px rgba(0, 0, 40, 0.7);
     border: 1px solid hsl(var(--border));
     overflow: hidden;
 }
@@ -77,7 +76,7 @@ body {
 .icon-wrapper {
     padding: 0.5rem;
     border-radius: 50%;
-    background: hsl(var(--primary) / 0.15);
+    background-color: hsl(var(--primary-glow));
 }
 
 .clock-icon {
@@ -86,18 +85,15 @@ body {
     color: hsl(var(--primary));
 }
 
-/* Gradient text title with stronger blue shades */
+/* Solid color title */
 .title {
     font-size: 1.5rem;
     font-weight: 700;
-    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.7));
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: hsl(var(--primary));
     margin-bottom: 0.5rem;
 }
 
-/* Subtitle muted color */
+/* Subtitle with muted color */
 .subtitle {
     font-size: 0.875rem;
     color: hsl(var(--muted-foreground));
@@ -131,7 +127,7 @@ body {
     color: hsl(var(--foreground));
 }
 
-/* Inputs styling */
+/* Inputs styling with solid dark background */
 .form-field input {
     text-align: center;
     font-family: 'Courier New', monospace;
@@ -140,23 +136,23 @@ body {
     padding: 0 1rem;
     border: 2px solid hsl(var(--border));
     border-radius: 0.375rem;
-    background: hsl(var(--input));
+    background-color: hsl(var(--input));
     color: hsl(var(--foreground));
-    transition: border-color 0.2s ease;
+    transition: border-color 0.15s ease;
 }
 
 .form-field input:focus {
     outline: none;
-    border-color: hsl(var(--primary) / 0.7);
+    border-color: hsl(var(--primary));
 }
 
-/* Primary button with blue gradient */
+/* Primary button with solid dark blue background, subtle shadow */
 .calculate-btn {
     width: 100%;
     height: 3rem;
     font-size: 1.125rem;
     font-weight: 600;
-    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.9));
+    background-color: hsl(var(--primary));
     color: white;
     border: none;
     border-radius: 0.375rem;
@@ -165,30 +161,31 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    box-shadow: 0 4px 14px 0 hsl(var(--primary) / 0.3);
-    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 80, 0.4);
+    transition: background-color 0.15s ease;
 }
 
 .calculate-btn:hover {
-    background: linear-gradient(to right, hsl(var(--primary) / 0.9), hsl(var(--primary)));
-    box-shadow: 0 6px 20px 0 hsl(var(--primary) / 0.4);
-    transform: translateY(-1px);
+    background-color: hsl(var(--primary-glow));
+    box-shadow: 0 4px 14px rgba(0, 0, 120, 0.5);
 }
 
+/* Icon inside button */
 .calculator-icon {
     width: 1.25rem;
     height: 1.25rem;
+    fill: white;
 }
 
-/* Result section with subtle transparency */
+/* Result section with solid darkish background */
 .result-section {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
     padding: 1rem;
-    background: hsl(var(--secondary) / 0.15);
+    background-color: hsl(var(--secondary));
     border-radius: 0.5rem;
-    border: 2px solid hsl(var(--secondary) / 0.25);
+    border: 1px solid hsl(var(--border));
 }
 
 /* Result labels */
@@ -198,7 +195,7 @@ body {
     color: hsl(var(--muted-foreground));
 }
 
-/* Result value styling */
+/* Result value with strong blue */
 .result-display {
     text-align: center;
 }
@@ -208,66 +205,69 @@ body {
     font-weight: 700;
     font-family: 'Courier New', monospace;
     color: hsl(var(--primary));
-    background: hsl(var(--primary) / 0.08);
+    background-color: hsl(var(--secondary));
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
-    border: 1px solid hsl(var(--primary) / 0.2);
+    border: 1px solid hsl(var(--primary-glow));
 }
 
-/* Copy button changes */
+/* Copy button: minimalistic style */
 .copy-btn {
     width: 100%;
     padding: 0.5rem 1rem;
-    background: transparent;
+    background-color: transparent;
     color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--primary) / 0.3);
+    border: 1px solid hsl(var(--primary-glow));
     border-radius: 0.375rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    transition: all 0.2s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
     margin-top: 0.5rem;
 }
 
 .copy-btn:hover {
-    background: hsl(var(--primary) / 0.08);
-    border-color: hsl(var(--primary) / 0.5);
+    background-color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+    color: white;
 }
 
 .copy-icon {
     width: 1rem;
     height: 1rem;
+    fill: currentColor;
 }
 
-/* Toast notifications */
+/* Toast notifications with solid backgrounds */
 .toast {
     position: fixed;
     top: 1rem;
     right: 1rem;
     padding: 1rem 1.5rem;
     border-radius: 0.5rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
     transform: translateX(400px);
     transition: transform 0.3s ease;
     z-index: 1000;
     max-width: 20rem;
+    font-weight: 600;
 }
 
 .toast.show {
     transform: translateX(0);
 }
 
-/* Success toast: bright blue-green instead of green - matches blue aesthetics */
+/* Success toast: teal-ish solid color for calmness */
 .toast.success {
-    background: hsl(160 75% 45%);
+    background-color: hsl(160 75% 30%);
     color: white;
 }
 
-/* Error toast: soft red */
+/* Error toast: strong but muted dark red */
 .toast.error {
-    background: hsl(0 84% 60%);
+    background-color: hsl(0 70% 45%);
     color: white;
 }
 
