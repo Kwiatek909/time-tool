@@ -9,7 +9,7 @@
 :root {
     /* Primary deep blue */
     --primary: 215 88% 35%; /* hsl(215, 88%, 35%) - Deep royal blue */
-    --primary-glow: 215 70% 40%; 
+    --primary-glow: 215 70% 20%; /* Darker blue for icon background */
     
     /* Secondary dark navy blue */
     --secondary: 215 75% 15%; /* hsl(215, 75%, 15%) - Very dark navy */
@@ -76,13 +76,16 @@ body {
 .icon-wrapper {
     padding: 0.5rem;
     border-radius: 50%;
-    background-color: hsl(var(--primary-glow));
+    background-color: hsl(var(--primary-glow)); /* darker blue circle background */
 }
 
+/* Clock icon: lighter color (very light blue) for visibility */
 .clock-icon {
     width: 1.5rem;
     height: 1.5rem;
-    color: hsl(var(--primary));
+    color: hsl(210 100% 90%);
+    /* If SVG uses fill, then apply fill as well */
+    fill: hsl(210 100% 90%);
 }
 
 /* Solid color title */
@@ -166,7 +169,7 @@ body {
 }
 
 .calculate-btn:hover {
-    background-color: hsl(var(--primary-glow));
+    background-color: hsl(215 90% 45%);
     box-shadow: 0 4px 14px rgba(0, 0, 120, 0.5);
 }
 
