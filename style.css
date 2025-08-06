@@ -5,55 +5,283 @@
     box-sizing: border-box;
 }
 
-/* Root color variables with blue shades */
+/* Blue theme color variables */
 :root {
-    --primary: 215 88% 45%; /* medium royal blue */
-    --primary-glow: 215 85% 40%; /* darker blue for circle */
-    --background: 215 85% 7%; /* very dark navy background */
-    --foreground: 215 88% 70%; /* lighter text blue */
+    /* Primary blue: medium blue */
+    --primary: 210 100% 56%; /* hsl(210, 100%, 56%) - Dodger Blue */
+    --primary-glow: 210 85% 65%; /* lighter blue for glow */
+    
+    /* Secondary/deep blue for background and accents */
+    --secondary: 217 85% 25%; /* hsl(217, 85%, 25%) - Dark royal blue */
+    
+    /* Card background: very dark blue with some opacity */
+    --card: 210 60% 10%; /* dark navy base */
+    --card-foreground: 210 40% 95%; /* almost white blue for text */
+    
+    /* Muted text / labels: medium dark blue */
+    --muted: 210 50% 40%;
+    --muted-foreground: 210 40% 70%;
+    
+    /* Borders, inputs and ring colors */
+    --border: 210 60% 30%;
+    --input: 210 50% 20%;
+    --ring: 210 100% 56%;
+    
+    /* Page background: a light blue gradient */
+    --background: 210 80% 93%;
+    --foreground: 210 40% 95%;
 }
 
-/* Body with dark navy background */
+/* Body with paired blue background gradient */
 body {
-    background-color: hsl(var(--background));
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, hsl(var(--secondary) / 0.85), hsl(var(--background) / 0.9));
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 1rem;
     color: hsl(var(--foreground));
 }
 
-/* Container for the header */
+/* Container max width */
 .container {
-    text-align: center;
+    width: 100%;
+    max-width: 28rem;
 }
 
-/* The blue circular background behind the icon */
-.icon-wrapper {
-    width: 4.5rem;
-    height: 4.5rem;
-    margin: 0 auto 1rem auto;
-    border-radius: 50%;
-    background-color: hsl(var(--primary-glow));
+/* Card with dark translucent background for contrast */
+.card {
+    background: hsl(var(--card) / 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 0.75rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 80, 0.7);
+    border: 1px solid hsl(var(--border));
+    overflow: hidden;
+}
+
+/* Header styling */
+.card-header {
+    text-align: center;
+    padding: 2rem 2rem 1.5rem;
+}
+
+/* Icon container and icon backgrounds */
+.icon-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 10px hsl(var(--primary-glow) / 0.6);
+    margin-bottom: 0.5rem;
 }
 
-/* Clock icon styling */
+.icon-wrapper {
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: hsl(var(--primary) / 0.15);
+}
+
 .clock-icon {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
     color: hsl(var(--primary));
-    fill: hsl(var(--primary));
 }
 
-/* Title styling */
+/* Gradient text title with stronger blue shades */
 .title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.7));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+/* Subtitle muted color */
+.subtitle {
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+}
+
+/* Card content layout */
+.card-content {
+    padding: 0 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Form input groups */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Labels */
+.form-field label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: hsl(var(--foreground));
+}
+
+/* Inputs styling */
+.form-field input {
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 1.125rem;
+    height: 3rem;
+    padding: 0 1rem;
+    border: 2px solid hsl(var(--border));
+    border-radius: 0.375rem;
+    background: hsl(var(--input));
+    color: hsl(var(--foreground));
+    transition: border-color 0.2s ease;
+}
+
+.form-field input:focus {
+    outline: none;
+    border-color: hsl(var(--primary) / 0.7);
+}
+
+/* Primary button with blue gradient */
+.calculate-btn {
+    width: 100%;
+    height: 3rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.9));
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 14px 0 hsl(var(--primary) / 0.3);
+    transition: all 0.2s ease;
+}
+
+.calculate-btn:hover {
+    background: linear-gradient(to right, hsl(var(--primary) / 0.9), hsl(var(--primary)));
+    box-shadow: 0 6px 20px 0 hsl(var(--primary) / 0.4);
+    transform: translateY(-1px);
+}
+
+.calculator-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Result section with subtle transparency */
+.result-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: hsl(var(--secondary) / 0.15);
+    border-radius: 0.5rem;
+    border: 2px solid hsl(var(--secondary) / 0.25);
+}
+
+/* Result labels */
+.result-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: hsl(var(--muted-foreground));
+}
+
+/* Result value styling */
+.result-display {
+    text-align: center;
+}
+
+.result-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
     color: hsl(var(--primary));
-    user-select: none;
+    background: hsl(var(--primary) / 0.08);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(var(--primary) / 0.2);
+}
+
+/* Copy button changes */
+.copy-btn {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--primary) / 0.3);
+    border-radius: 0.375rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.copy-btn:hover {
+    background: hsl(var(--primary) / 0.08);
+    border-color: hsl(var(--primary) / 0.5);
+}
+
+.copy-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Toast notifications */
+.toast {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    max-width: 20rem;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+/* Success toast: bright blue-green instead of green - matches blue aesthetics */
+.toast.success {
+    background: hsl(160 75% 45%);
+    color: white;
+}
+
+/* Error toast: soft red */
+.toast.error {
+    background: hsl(0 84% 60%);
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .container {
+        padding: 0.5rem;
+    }
+
+    .card-header {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+
+    .card-content {
+        padding: 0 1.5rem 1.5rem;
+    }
 }
